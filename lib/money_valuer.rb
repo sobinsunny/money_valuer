@@ -30,7 +30,7 @@ module MoneyValuer
         when /Could not convert\./
           raise UnknownRate,"Invalid input data"
         else
-          raise MoneyCheckerFeatchError
+          raise MoneyCheckerFetchError
       end
     end
 
