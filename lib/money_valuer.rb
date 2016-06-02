@@ -2,6 +2,8 @@ require "money_valuer/version"
 require 'open-uri'
 
 module MoneyValuer
+    attr_accessor :resource
+
     class MoneyCheckerFetchError < StandardError
 
     end
