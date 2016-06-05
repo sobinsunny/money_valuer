@@ -4,7 +4,7 @@ require 'open-uri'
 module MoneyValuer
     attr_accessor :resource
 
-    class MoneyCheckerFetchError < StandardError
+    class ArgumentError
 
     end
 
@@ -24,15 +24,17 @@ module MoneyValuer
           :query => "a=#{amount}&from=#{from}&to=#{to}"
       )
     end
+  
+
 
     def self.extract_rate(data)
       case data
         when /<span class=bld>(\d+\.?\d*) [A-Z]{3}<\/span>/
-           return $1.to_f
+          return $1.to_f
         when /Could not convert\./
-          raise UnknownRate,"Invalid input data"
+          raise(UnknownRate,"Invalid input data")
         else
-          raise MoneyCheckerFetchError
+          raise(ArgumentError, ":baz must be a boolean")
       end
     end
 

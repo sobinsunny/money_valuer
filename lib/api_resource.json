@@ -1,0 +1,9 @@
+{
+  "titile"  : "Api Resource", ,
+  "configuration"  : {
+    "google" : {
+      "host": "www.google.com",
+      "path": "/finance/converter"
+    }
+  }
+}
