@@ -1,12 +1,8 @@
 require "money_valuer/version"
 require 'open-uri'
-
+require 'money_valuer/errors'
 module MoneyValuer
     attr_accessor :resource
-
-    class ArgumentError
-
-    end
 
     SERVICE_HOST = "www.google.com"
     SERVICE_PATH = "/finance/converter"
@@ -32,10 +28,9 @@ module MoneyValuer
         when /<span class=bld>(\d+\.?\d*) [A-Z]{3}<\/span>/
           return $1.to_f
         when /Could not convert\./
-          raise(UnknownRate,"Invalid input data")
+          raise MoneyValuer::UnknownRate,"Invalid input data"
         else
-          raise(ArgumentError, ":baz must be a boolean")
+          raise MoneyValuer::ConnectionError,"Unexpected parameters"
       end
     end
-
 end
